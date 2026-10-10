@@ -15,20 +15,22 @@
         <div class="brand">Only Us</div>
         <div class="subbrand">a little space for two</div>
       </div>
-      <span id="connection" class="status-pill">Demo mode</span>
+      <span id="connection" class="status-pill">Connecting…</span>
     </header>
 
     <section id="login" class="login-panel">
       <div class="heart-art">♡</div>
       <h1>Just between us.</h1>
       <p class="muted">Sign in to open your private conversation.</p>
-      <label for="username">Your name</label>
-      <input id="username" autocomplete="nickname" maxlength="40" placeholder="Enter your name" />
-      <label for="passcode">Invite passcode</label>
-      <input id="passcode" type="password" autocomplete="current-password" placeholder="Demo: our-secret" />
-      <button id="loginBtn" class="primary">Open our chat</button>
+      <form id="loginForm">
+        <label for="email">Email address</label>
+        <input id="email" type="email" autocomplete="username" required placeholder="Your Firebase account email" />
+        <label for="password">Password</label>
+        <input id="password" type="password" autocomplete="current-password" required placeholder="Your password" />
+        <button id="loginBtn" class="primary" type="submit">Open our chat</button>
+      </form>
       <p id="loginError" class="error" aria-live="polite"></p>
-      <p class="small-note">This preview stores demo messages on this device only. It is not yet connected to a private online backend.</p>
+      <p class="small-note">Only the two approved Firebase accounts can open this conversation.</p>
     </section>
 
     <section id="chat" class="chat-panel hidden">
@@ -38,26 +40,21 @@
           <h2>Our little corner</h2>
           <p id="welcomeLine" class="muted">A conversation for two</p>
         </div>
-        <button id="logoutBtn" class="ghost" aria-label="Log out">Exit</button>
+        <button id="logoutBtn" class="ghost" type="button" aria-label="Log out">Exit</button>
       </div>
-      <div id="privacyNotice" class="notice">Demo mode: messages are saved only in this browser on this device.</div>
+      <div id="privacyNotice" class="notice">Private chat: only approved accounts can read and send messages.</div>
       <div id="messages" class="messages" aria-live="polite"></div>
       <form id="messageForm" class="composer">
-        <textarea id="messageInput" rows="1" maxlength="3000" placeholder="Write something kind..." aria-label="Message"></textarea>
+        <textarea id="messageInput" rows="1" maxlength="3000" placeholder="Write something kind..." aria-label="Message" required></textarea>
         <button class="send-btn" type="submit" aria-label="Send message">➤</button>
       </form>
-      <div class="voice-tools">
-        <button id="recordBtn" class="voice-btn">● Record voice</button>
-        <span id="recordStatus" class="muted">Voice messages need microphone permission.</span>
-      </div>
-      <div id="voicePreview" class="voice-preview hidden">
-        <audio id="voiceAudio" controls></audio>
-        <button id="sendVoiceBtn" class="primary compact">Send voice</button>
-        <button id="discardVoiceBtn" class="ghost">Discard</button>
-      </div>
     </section>
-    <footer>Made for two · Keep your passcodes private</footer>
+    <footer>Made for two · Keep your passwords private</footer>
   </main>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

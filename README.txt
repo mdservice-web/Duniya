@@ -1,30 +1,22 @@
-ONLY US CHAT — ANDROID STARTER
+ONLY US CHAT — FIREBASE TEXT-ONLY VERSION
 
-Included:
-- Mobile-first chat UI
-- Demo passcode screen
-- Text messages stored in this browser's localStorage
-- Voice recording preview and local demo message storage
+Files:
+- index.html
+- style.css
+- app.js
 
-IMPORTANT LIMITATIONS:
-- This is a FRONTEND DEMO, not a real private online chat.
-- Demo passcode is visible in app.js and is not secure authentication.
-- Data is local to this browser/device; it will NOT sync with your girlfriend's phone.
-- Do not use it for confidential messages yet.
-- Real online private chat requires backend authentication, database policies (e.g. Supabase RLS), and private voice-file storage policies.
-- Voice files may exceed browser local storage limits.
+This version uses Firebase Authentication (Email/Password) and Cloud Firestore.
+It is designed for the two Firebase user UIDs supplied for this project.
 
-Demo passcode: our-secret
+IMPORTANT SETUP:
+1. Keep the Firestore security rules restricted to those two UIDs.
+2. In Firebase Console > Authentication > Settings > Authorized domains, ensure your GitHub Pages domain is listed.
+3. In GitHub, replace index.html and app.js with these files. Keep your existing style.css.
+4. Commit changes, wait for GitHub Pages to redeploy, then test sign-in on both devices.
+5. This uses client-side Firebase config; never add a service-account/private key to these files.
+6. This is access-controlled, but not end-to-end encrypted. Use strong passwords and keep accounts secure.
 
-To preview:
-1. Open index.html in a browser that supports local files, or upload these files to a static hosting service.
-2. Microphone access usually requires HTTPS (a secure website) or localhost.
-3. Enter any name and passcode our-secret.
+Firestore collection used: messages
+Fields: text, senderUid, createdAt
 
-For real deployment:
-1. Create a Supabase project.
-2. Configure exactly two accounts and disable public sign-ups.
-3. Create a conversations/messages table with strict row-level security.
-4. Create a private storage bucket and policies for voice files.
-5. Connect the frontend to Supabase using only the public anon/publishable key; never expose the service-role key.
-6. Test with both accounts and verify a third account cannot read or write messages.
+If Firestore ordering errors appear, ensure the documents contain createdAt timestamps; messages are ordered by createdAt.
