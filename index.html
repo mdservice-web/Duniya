@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#15131b" />
+  <title>Only Us Chat</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand-mark">♡</div>
+      <div>
+        <div class="brand">Only Us</div>
+        <div class="subbrand">a little space for two</div>
+      </div>
+      <span id="connection" class="status-pill">Demo mode</span>
+    </header>
+
+    <section id="login" class="login-panel">
+      <div class="heart-art">♡</div>
+      <h1>Just between us.</h1>
+      <p class="muted">Sign in to open your private conversation.</p>
+      <label for="username">Your name</label>
+      <input id="username" autocomplete="nickname" maxlength="40" placeholder="Enter your name" />
+      <label for="passcode">Invite passcode</label>
+      <input id="passcode" type="password" autocomplete="current-password" placeholder="Demo: our-secret" />
+      <button id="loginBtn" class="primary">Open our chat</button>
+      <p id="loginError" class="error" aria-live="polite"></p>
+      <p class="small-note">This preview stores demo messages on this device only. It is not yet connected to a private online backend.</p>
+    </section>
+
+    <section id="chat" class="chat-panel hidden">
+      <div class="chat-heading">
+        <div class="avatar">♡</div>
+        <div class="chat-person">
+          <h2>Our little corner</h2>
+          <p id="welcomeLine" class="muted">A conversation for two</p>
+        </div>
+        <button id="logoutBtn" class="ghost" aria-label="Log out">Exit</button>
+      </div>
+      <div id="privacyNotice" class="notice">Demo mode: messages are saved only in this browser on this device.</div>
+      <div id="messages" class="messages" aria-live="polite"></div>
+      <form id="messageForm" class="composer">
+        <textarea id="messageInput" rows="1" maxlength="3000" placeholder="Write something kind..." aria-label="Message"></textarea>
+        <button class="send-btn" type="submit" aria-label="Send message">➤</button>
+      </form>
+      <div class="voice-tools">
+        <button id="recordBtn" class="voice-btn">● Record voice</button>
+        <span id="recordStatus" class="muted">Voice messages need microphone permission.</span>
+      </div>
+      <div id="voicePreview" class="voice-preview hidden">
+        <audio id="voiceAudio" controls></audio>
+        <button id="sendVoiceBtn" class="primary compact">Send voice</button>
+        <button id="discardVoiceBtn" class="ghost">Discard</button>
+      </div>
+    </section>
+    <footer>Made for two · Keep your passcodes private</footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
